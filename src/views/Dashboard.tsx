@@ -10,9 +10,8 @@ const EVENING_START = 20;
 
 const getCurrentWindow = () => {
   const h = new Date().getHours();
-  if (h >= MORNING_START && h < MORNING_END) return 'morning';
-  if (h >= EVENING_START) return 'evening';
-  return 'closed';
+  if (h >= 12) return 'evening';
+  return 'morning';
 };
 
 const getTodayString = () => new Date().toISOString().split('T')[0];
