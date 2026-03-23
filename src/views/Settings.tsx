@@ -45,7 +45,7 @@ export function Settings() {
                 <input
                   value={nameInput}
                   onChange={e => setNameInput(e.target.value)}
-                  className="flex-1 bg-white/50 dark:bg-slate-800/50 border border-pulse-blue/20 dark:border-white/15 rounded-lg px-2 py-1 text-sm text-pulse-blue dark:text-sky-100 focus:outline-none focus:ring-2 focus:ring-pulse-cyan/30"
+                  className="flex-1 bg-white dark:bg-slate-800 border border-sky-200 dark:border-slate-600 rounded-lg px-2 py-1 text-sm text-pulse-blue dark:text-sky-100 focus:outline-none focus:ring-2 focus:ring-pulse-cyan/40"
                   autoFocus
                   onKeyDown={e => e.key === 'Enter' && saveName()}
                 />
@@ -56,7 +56,7 @@ export function Settings() {
             ) : (
               <h3 className="text-sm font-bold text-pulse-blue dark:text-sky-100 truncate">{profile?.name}</h3>
             )}
-            <p className="text-xs text-pulse-blue/40 dark:text-sky-100/40 truncate">{profile?.email}</p>
+            <p className="text-xs text-pulse-label/70 dark:text-sky-300/80 truncate">{profile?.email}</p>
           </div>
         </div>
         <button
@@ -64,7 +64,7 @@ export function Settings() {
           className="w-full p-4 text-left text-xs font-bold text-pulse-blue dark:text-sky-100/70 hover:bg-pulse-blue/5 dark:hover:bg-white/5 transition-colors flex items-center justify-between"
         >
           Edit Name
-          <ChevronRight size={14} className="text-pulse-blue/25 dark:text-sky-100/20" />
+          <ChevronRight size={14} className="text-pulse-blue/50 dark:text-sky-300/50" />
         </button>
       </div>
 
@@ -76,12 +76,12 @@ export function Settings() {
             <p className="text-xs font-bold text-pulse-blue dark:text-sky-100/80">
               {isDarkMode ? 'Dark Mode' : 'Light Mode'}
             </p>
-            <p className="text-[10px] text-pulse-blue/40 dark:text-sky-100/35">Change appearance</p>
+            <p className="text-[10px] text-pulse-label/70 dark:text-sky-300/70">Change appearance</p>
           </div>
         </div>
         <button
           onClick={toggleDarkMode}
-          className={`w-11 h-6 rounded-full relative transition-colors ${isDarkMode ? 'bg-sky-500' : 'bg-pulse-label/30'}`}
+          className={`w-11 h-6 rounded-full relative transition-colors ${isDarkMode ? 'bg-sky-500' : 'bg-slate-300'}`}
           role="switch"
           aria-checked={isDarkMode}
         >
@@ -94,11 +94,11 @@ export function Settings() {
         <div className="flex items-center gap-3">
           {notificationPermission === 'granted'
             ? <Bell size={16} className="text-pulse-cyan" />
-            : <BellOff size={16} className="text-pulse-label/50 dark:text-sky-100/40" />
+            : <BellOff size={16} className="text-pulse-label dark:text-sky-300" />
           }
           <div>
             <p className="text-xs font-bold text-pulse-blue dark:text-sky-100/80">Reminders</p>
-            <p className="text-[10px] text-pulse-blue/40 dark:text-sky-100/35">
+            <p className="text-[10px] text-pulse-label/70 dark:text-sky-300/70">
               {notificationPermission === 'granted'
                 ? 'Enabled — you\'ll be reminded before windows close'
                 : notificationPermission === 'denied'
@@ -130,11 +130,11 @@ export function Settings() {
       </button>
 
       <div className="glass-card p-4 text-center space-y-1">
-        <p className="text-[11px] font-bold text-pulse-blue/50 dark:text-sky-100/40">Our Pulse</p>
-        <p className="text-[10px] text-pulse-blue/35 dark:text-sky-100/30">
+        <p className="text-[11px] font-bold text-pulse-blue/70 dark:text-sky-200">Our Pulse</p>
+        <p className="text-[10px] text-pulse-label/70 dark:text-sky-300/70">
           Version 1.0.0 &nbsp;·&nbsp; An <span className="font-semibold">Onyx Mercer</span> product
         </p>
-        <p className="text-[9px] text-pulse-blue/25 dark:text-sky-100/20">© 2026 Onyx Mercer (Pty) Ltd.</p>
+        <p className="text-[9px] text-pulse-label/60 dark:text-sky-300/60">© 2026 Onyx Mercer (Pty) Ltd.</p>
       </div>
     </motion.div>
   );

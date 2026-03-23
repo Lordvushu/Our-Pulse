@@ -26,6 +26,9 @@ export function Contacts() {
     setIsAdding(false);
   };
 
+  const inputClass = "w-full bg-white dark:bg-slate-800 border border-sky-200 dark:border-slate-600 rounded-lg px-3 py-2.5 text-sm text-pulse-blue dark:text-sky-100 focus:outline-none focus:ring-2 focus:ring-pulse-cyan/40 placeholder:text-slate-400";
+  const labelClass = "text-[10px] uppercase font-bold tracking-wider text-pulse-label dark:text-sky-300 ml-1";
+
   return (
     <motion.div
       key="contacts"
@@ -39,13 +42,13 @@ export function Contacts() {
         <h2 className="font-serif text-2xl text-pulse-blue dark:text-sky-50">Your Circle</h2>
         <button
           onClick={() => setIsAdding(true)}
-          className="w-10 h-10 bg-gradient-to-br from-pulse-btn-start to-pulse-btn-end text-white rounded-full shadow-md shadow-pulse-cyan/25 flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
+          className="w-10 h-10 bg-gradient-to-br from-pulse-btn-start to-pulse-btn-end text-white rounded-full shadow-md shadow-pulse-cyan/30 flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
         >
           <Plus size={20} />
         </button>
       </div>
 
-      {/* Add contact form */}
+      {/* Add form */}
       <AnimatePresence>
         {isAdding && (
           <motion.form
@@ -55,37 +58,25 @@ export function Contacts() {
             onSubmit={handleAdd}
             className="glass-card p-5 space-y-4 overflow-hidden"
           >
-            <p className="text-[10px] uppercase tracking-wider font-bold text-pulse-label/70 dark:text-sky-100/50">
+            <p className="text-[11px] uppercase tracking-wider font-bold text-pulse-label dark:text-sky-300">
               New circle member
             </p>
 
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-1">
-                <label className="text-[9px] uppercase font-bold text-pulse-blue/40 dark:text-sky-100/40 ml-1">Name *</label>
-                <input
-                  type="text" required value={form.name} onChange={set('name')} autoFocus
-                  className="w-full bg-white/50 dark:bg-slate-800/50 border border-pulse-blue/10 dark:border-white/10 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pulse-cyan/30 dark:text-sky-100 placeholder:text-pulse-blue/25"
-                  placeholder="Mum"
-                />
+                <label className={labelClass}>Name *</label>
+                <input type="text" required value={form.name} onChange={set('name')} autoFocus className={inputClass} placeholder="Mum" />
               </div>
               <div className="space-y-1">
-                <label className="text-[9px] uppercase font-bold text-pulse-blue/40 dark:text-sky-100/40 ml-1">Relation</label>
-                <input
-                  type="text" value={form.relation} onChange={set('relation')}
-                  className="w-full bg-white/50 dark:bg-slate-800/50 border border-pulse-blue/10 dark:border-white/10 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pulse-cyan/30 dark:text-sky-100 placeholder:text-pulse-blue/25"
-                  placeholder="Family"
-                />
+                <label className={labelClass}>Relation</label>
+                <input type="text" value={form.relation} onChange={set('relation')} className={inputClass} placeholder="Family" />
               </div>
             </div>
 
             <div className="space-y-1">
-              <label className="text-[9px] uppercase font-bold text-pulse-blue/40 dark:text-sky-100/40 ml-1">Email Address *</label>
-              <input
-                type="email" required value={form.email} onChange={set('email')}
-                className="w-full bg-white/50 dark:bg-slate-800/50 border border-pulse-blue/10 dark:border-white/10 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pulse-cyan/30 dark:text-sky-100 placeholder:text-pulse-blue/25"
-                placeholder="mum@example.com"
-              />
-              <p className="text-[10px] text-pulse-blue/35 dark:text-sky-100/25 ml-1">Required to receive pulse alerts</p>
+              <label className={labelClass}>Email Address *</label>
+              <input type="email" required value={form.email} onChange={set('email')} className={inputClass} placeholder="mum@example.com" />
+              <p className="text-[10px] text-pulse-label/70 dark:text-sky-300/70 ml-1">Required to receive pulse alerts</p>
             </div>
 
             <div className="flex gap-2 pt-1">
@@ -97,7 +88,7 @@ export function Contacts() {
               </button>
               <button
                 type="button" onClick={cancel}
-                className="px-4 border border-pulse-blue/15 dark:border-white/10 text-pulse-blue/60 dark:text-sky-100/50 text-xs font-bold rounded-lg hover:bg-pulse-blue/5 dark:hover:bg-white/5 transition-colors"
+                className="px-4 border-2 border-slate-200 dark:border-slate-600 text-slate-500 dark:text-sky-300 text-xs font-bold rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
               >
                 Cancel
               </button>
@@ -110,10 +101,10 @@ export function Contacts() {
       <div className="space-y-3">
         {contacts.length === 0 ? (
           <div className="text-center py-16 space-y-3">
-            <Users size={52} className="mx-auto text-pulse-blue/20 dark:text-sky-100/15" />
+            <Users size={52} className="mx-auto text-sky-300 dark:text-sky-700" />
             <div>
-              <p className="text-sm font-medium text-pulse-blue/50 dark:text-sky-100/40">Your circle is empty</p>
-              <p className="text-xs text-pulse-label/40 dark:text-sky-100/30 mt-1">
+              <p className="text-sm font-semibold text-pulse-blue/70 dark:text-sky-200">Your circle is empty</p>
+              <p className="text-xs text-pulse-label/70 dark:text-sky-300/70 mt-1">
                 Add people who should receive your check-in emails
               </p>
             </div>
@@ -126,16 +117,16 @@ export function Contacts() {
               className="glass-card p-4 flex items-center justify-between"
             >
               <div className="flex items-center gap-4 min-w-0">
-                <div className="w-11 h-11 rounded-full bg-pulse-label/10 dark:bg-sky-900/40 border-2 border-pulse-label/15 dark:border-sky-700/40 flex items-center justify-center text-pulse-label dark:text-sky-200 font-bold text-base shrink-0">
+                <div className="w-11 h-11 rounded-full bg-sky-100 dark:bg-sky-900/50 border-2 border-sky-300 dark:border-sky-600/60 flex items-center justify-center text-pulse-label dark:text-sky-200 font-bold text-base shrink-0">
                   {contact.initial}
                 </div>
                 <div className="min-w-0">
                   <h3 className="text-sm font-bold text-pulse-blue dark:text-sky-100 truncate">{contact.name}</h3>
                   {contact.relation && (
-                    <p className="text-[10px] text-pulse-blue/40 dark:text-sky-100/40 uppercase tracking-wider">{contact.relation}</p>
+                    <p className="text-[11px] text-pulse-label/80 dark:text-sky-300/80 uppercase tracking-wider font-medium">{contact.relation}</p>
                   )}
                   {contact.email && (
-                    <p className="text-[11px] text-pulse-label/50 dark:text-sky-100/35 flex items-center gap-1 mt-0.5 truncate">
+                    <p className="text-[11px] text-pulse-label/70 dark:text-sky-300/70 flex items-center gap-1 mt-0.5 truncate">
                       <Mail size={10} className="shrink-0" />
                       {contact.email}
                     </p>
@@ -144,7 +135,7 @@ export function Contacts() {
               </div>
               <button
                 onClick={() => removeContact(contact.id)}
-                className="p-2 text-red-400/50 hover:text-red-500 active:text-red-600 transition-colors shrink-0 ml-2"
+                className="p-2 text-red-400 hover:text-red-600 transition-colors shrink-0 ml-2"
                 aria-label={`Remove ${contact.name}`}
               >
                 <Trash2 size={16} />

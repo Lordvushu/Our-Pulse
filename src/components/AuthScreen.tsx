@@ -48,7 +48,7 @@ export function AuthScreen() {
           </div>
           <div>
             <h1 className="font-serif text-5xl text-pulse-blue">Our Pulse</h1>
-            <p className="text-xs uppercase tracking-[0.2em] text-pulse-blue/60 font-bold mt-1">
+            <p className="text-xs uppercase tracking-[0.2em] text-pulse-label/80 font-bold mt-1">
               We show up for each other
             </p>
           </div>
@@ -65,7 +65,7 @@ export function AuthScreen() {
                 required
                 value={form.name}
                 onChange={set('name')}
-                className="w-full bg-white/50 border border-pulse-blue/15 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pulse-cyan/30 transition-all placeholder:text-pulse-blue/30"
+                className="w-full bg-white dark:bg-slate-800 border border-sky-200 dark:border-slate-600 rounded-xl px-4 py-3 text-sm text-pulse-blue dark:text-sky-100 focus:outline-none focus:ring-2 focus:ring-pulse-cyan/40 transition-all placeholder:text-slate-400"
                 placeholder="Jane Doe"
               />
             </div>
@@ -80,7 +80,7 @@ export function AuthScreen() {
               required
               value={form.email}
               onChange={set('email')}
-              className="w-full bg-white/50 border border-pulse-blue/15 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pulse-cyan/30 transition-all placeholder:text-pulse-blue/30"
+              className="w-full bg-white dark:bg-slate-800 border border-sky-200 dark:border-slate-600 rounded-xl px-4 py-3 text-sm text-pulse-blue dark:text-sky-100 focus:outline-none focus:ring-2 focus:ring-pulse-cyan/40 transition-all placeholder:text-slate-400"
               placeholder="jane@example.com"
             />
           </div>
@@ -95,7 +95,7 @@ export function AuthScreen() {
               minLength={6}
               value={form.password}
               onChange={set('password')}
-              className="w-full bg-white/50 border border-pulse-blue/15 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pulse-cyan/30 transition-all placeholder:text-pulse-blue/30"
+              className="w-full bg-white dark:bg-slate-800 border border-sky-200 dark:border-slate-600 rounded-xl px-4 py-3 text-sm text-pulse-blue dark:text-sky-100 focus:outline-none focus:ring-2 focus:ring-pulse-cyan/40 transition-all placeholder:text-slate-400"
               placeholder="••••••••"
             />
           </div>
@@ -112,7 +112,7 @@ export function AuthScreen() {
         <div className="text-center">
           <button
             onClick={() => setMode(mode === 'login' ? 'signup' : 'login')}
-            className="text-xs text-pulse-blue/50 hover:text-pulse-blue transition-colors"
+            className="text-xs text-pulse-label/70 hover:text-pulse-blue dark:text-sky-300/70 dark:hover:text-sky-200 transition-colors"
           >
             {mode === 'login'
               ? "Don't have an account? Sign up"
@@ -121,9 +121,9 @@ export function AuthScreen() {
         </div>
 
         {/* Onyx Mercer byline */}
-        <div className="text-center pt-2 border-t border-pulse-blue/8">
-          <p className="text-[10px] text-pulse-blue/35 tracking-wider">
-            An <span className="font-semibold text-pulse-blue/50">Onyx Mercer</span> product &nbsp;·&nbsp; © 2026
+        <div className="text-center pt-2 border-t border-sky-200 dark:border-sky-800/50">
+          <p className="text-[10px] text-pulse-label/70 dark:text-sky-300/60 tracking-wider">
+            An <span className="font-semibold text-pulse-label dark:text-sky-300">Onyx Mercer</span> product &nbsp;·&nbsp; © 2026
           </p>
         </div>
       </motion.div>

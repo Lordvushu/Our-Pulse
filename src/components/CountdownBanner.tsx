@@ -11,7 +11,7 @@ export function CountdownBanner() {
           ? 'bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/50'
           : isOpenWindow
           ? 'bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-200/60 dark:border-emerald-800/30'
-          : 'bg-pulse-blue/5 dark:bg-white/5 border border-pulse-blue/10 dark:border-white/10'
+          : 'bg-sky-100/80 dark:bg-slate-800/60 border border-sky-200 dark:border-slate-700'
       }`}
     >
       <span
@@ -20,7 +20,7 @@ export function CountdownBanner() {
             ? 'text-amber-700 dark:text-amber-400'
             : isOpenWindow
             ? 'text-emerald-700 dark:text-emerald-400'
-            : 'text-pulse-label/60 dark:text-sky-100/40'
+            : 'text-pulse-label dark:text-sky-300'
         }`}
       >
         {label}
@@ -31,7 +31,7 @@ export function CountdownBanner() {
             ? 'text-amber-800 dark:text-amber-300'
             : isOpenWindow
             ? 'text-emerald-800 dark:text-emerald-300'
-            : 'text-pulse-blue/70 dark:text-sky-100/60'
+            : 'text-pulse-blue dark:text-sky-200'
         }`}
       >
         {timeString}

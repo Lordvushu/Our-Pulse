@@ -47,11 +47,11 @@ export function OnboardingFlow() {
           { icon: '💙', title: 'Your circle is notified', desc: 'An email goes to everyone who cares about you' },
           { icon: '🚨', title: 'Missed? They reach out', desc: 'No pulse means your circle knows to check in' },
         ].map((item) => (
-          <div key={item.title} className="flex items-start gap-3 p-3 bg-pulse-blue/5 dark:bg-white/5 rounded-xl">
+          <div key={item.title} className="flex items-start gap-3 p-3 bg-sky-50 dark:bg-slate-800/60 rounded-xl">
             <span className="text-xl">{item.icon}</span>
             <div>
               <p className="text-sm font-semibold text-pulse-blue dark:text-sky-100">{item.title}</p>
-              <p className="text-xs text-pulse-label/60 dark:text-sky-100/50 mt-0.5">{item.desc}</p>
+              <p className="text-xs text-pulse-label/80 dark:text-sky-300/80 mt-0.5">{item.desc}</p>
             </div>
           </div>
         ))}
@@ -72,7 +72,7 @@ export function OnboardingFlow() {
           <Users size={24} className="text-pulse-label dark:text-sky-300" />
         </div>
         <h2 className="font-serif text-3xl text-pulse-blue dark:text-sky-50">Your Circle</h2>
-        <p className="text-sm text-pulse-label/60 dark:text-sky-100/50">
+        <p className="text-sm text-pulse-label/80 dark:text-sky-300/80">
           Add at least one person who should receive your check-in emails.
         </p>
       </div>
@@ -84,7 +84,7 @@ export function OnboardingFlow() {
           </div>
           <div>
             <p className="font-semibold text-pulse-blue dark:text-sky-100">{contactForm.name} added!</p>
-            <p className="text-xs text-pulse-label/50 dark:text-sky-100/40 mt-1">They'll receive email alerts when you check in.</p>
+            <p className="text-xs text-pulse-label/70 dark:text-sky-300/70 mt-1">They'll receive email alerts when you check in.</p>
           </div>
           <button
             onClick={() => setStep(2)}
@@ -99,7 +99,7 @@ export function OnboardingFlow() {
             <label className="text-[10px] uppercase tracking-wider font-semibold text-pulse-label ml-1">Name</label>
             <input
               type="text" required value={contactForm.name} onChange={set('name')}
-              className="w-full bg-white/50 dark:bg-slate-800/50 border border-pulse-blue/15 dark:border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pulse-cyan/30 placeholder:text-pulse-blue/30 dark:text-sky-100"
+              className="w-full bg-white dark:bg-slate-800 border border-sky-200 dark:border-slate-600 rounded-xl px-4 py-3 text-sm text-pulse-blue dark:text-sky-100 focus:outline-none focus:ring-2 focus:ring-pulse-cyan/40 placeholder:text-slate-400"
               placeholder="Mum"
             />
           </div>
@@ -107,7 +107,7 @@ export function OnboardingFlow() {
             <label className="text-[10px] uppercase tracking-wider font-semibold text-pulse-label ml-1">Relation</label>
             <input
               type="text" value={contactForm.relation} onChange={set('relation')}
-              className="w-full bg-white/50 dark:bg-slate-800/50 border border-pulse-blue/15 dark:border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pulse-cyan/30 placeholder:text-pulse-blue/30 dark:text-sky-100"
+              className="w-full bg-white dark:bg-slate-800 border border-sky-200 dark:border-slate-600 rounded-xl px-4 py-3 text-sm text-pulse-blue dark:text-sky-100 focus:outline-none focus:ring-2 focus:ring-pulse-cyan/40 placeholder:text-slate-400"
               placeholder="Family"
             />
           </div>
@@ -115,10 +115,10 @@ export function OnboardingFlow() {
             <label className="text-[10px] uppercase tracking-wider font-semibold text-pulse-label ml-1">Email Address <span className="text-red-400">*</span></label>
             <input
               type="email" required value={contactForm.email} onChange={set('email')}
-              className="w-full bg-white/50 dark:bg-slate-800/50 border border-pulse-blue/15 dark:border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pulse-cyan/30 placeholder:text-pulse-blue/30 dark:text-sky-100"
+              className="w-full bg-white dark:bg-slate-800 border border-sky-200 dark:border-slate-600 rounded-xl px-4 py-3 text-sm text-pulse-blue dark:text-sky-100 focus:outline-none focus:ring-2 focus:ring-pulse-cyan/40 placeholder:text-slate-400"
               placeholder="mum@example.com"
             />
-            <p className="text-[10px] text-pulse-blue/40 dark:text-sky-100/30 ml-1">They'll receive an email when you check in</p>
+            <p className="text-[10px] text-pulse-label/70 dark:text-sky-300/70 ml-1">They'll receive an email when you check in</p>
           </div>
           <button
             type="submit" disabled={adding}
@@ -137,7 +137,7 @@ export function OnboardingFlow() {
           <Bell size={24} className="text-amber-600 dark:text-amber-400" />
         </div>
         <h2 className="font-serif text-3xl text-pulse-blue dark:text-sky-50">Reminders</h2>
-        <p className="text-sm text-pulse-label/60 dark:text-sky-100/50">
+        <p className="text-sm text-pulse-label/80 dark:text-sky-300/80">
           Get a nudge before each window closes so you never miss a check-in.
         </p>
       </div>
@@ -152,7 +152,7 @@ export function OnboardingFlow() {
           <div key={r.time} className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-pulse-cyan shrink-0" />
             <span className="text-xs font-semibold text-pulse-blue dark:text-sky-100 w-16">{r.time}</span>
-            <span className="text-xs text-pulse-label/60 dark:text-sky-100/50">{r.label}</span>
+            <span className="text-xs text-pulse-label/80 dark:text-sky-300">{r.label}</span>
           </div>
         ))}
       </div>
@@ -171,7 +171,7 @@ export function OnboardingFlow() {
         </button>
       )}
 
-      <button onClick={complete} className="w-full text-xs text-pulse-blue/40 dark:text-sky-100/30 hover:text-pulse-blue/60 dark:hover:text-sky-100/50 py-2 transition-colors">
+      <button onClick={complete} className="w-full text-xs text-pulse-label/70 dark:text-sky-300/70 hover:text-pulse-label dark:hover:text-sky-200 py-2 transition-colors">
         {notificationPermission === 'granted' ? 'Finish setup →' : 'Skip for now'}
       </button>
     </motion.div>,
