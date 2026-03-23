@@ -1,5 +1,5 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
-import { Heart } from 'lucide-react';
+import { Heart, Eye, EyeOff } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useApp } from '../context/AppContext';
 
@@ -8,6 +8,7 @@ export function AuthScreen() {
   const [mode, setMode] = useState<'login' | 'signup'>('login');
   const [form, setForm] = useState({ email: '', password: '', name: '' });
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -89,15 +90,24 @@ export function AuthScreen() {
             <label className="text-[10px] uppercase tracking-wider font-semibold text-pulse-label ml-1">
               Password
             </label>
-            <input
-              type="password"
-              required
-              minLength={6}
-              value={form.password}
-              onChange={set('password')}
-              className="w-full bg-white dark:bg-slate-800 border border-sky-200 dark:border-slate-600 rounded-xl px-4 py-3 text-sm text-pulse-blue dark:text-sky-100 focus:outline-none focus:ring-2 focus:ring-pulse-cyan/40 transition-all placeholder:text-slate-400"
-              placeholder="••••••••"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                required
+                minLength={6}
+                value={form.password}
+                onChange={set('password')}
+                className="w-full bg-white dark:bg-slate-800 border border-sky-200 dark:border-slate-600 rounded-xl px-4 py-3 pr-11 text-sm text-pulse-blue dark:text-sky-100 focus:outline-none focus:ring-2 focus:ring-pulse-cyan/40 transition-all placeholder:text-slate-400"
+                placeholder="••••••••"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(v => !v)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-pulse-blue dark:hover:text-sky-300 transition-colors"
+              >
+                {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+              </button>
+            </div>
           </div>
 
           <button

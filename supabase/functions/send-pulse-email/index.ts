@@ -1,6 +1,6 @@
 // Supabase Edge Function — send check-in email to all contacts
 // Deploy: supabase functions deploy send-pulse-email
-// Secrets: supabase secrets set RESEND_API_KEY=re_...
+// Secrets: supabase secrets set RESEND_API_KEY=<your-resend-key>
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
