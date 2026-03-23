@@ -60,6 +60,7 @@ export function usePulses(
     if (!userId) return;
 
     const window = getCurrentWindow();
+    const today = getTodayString();
 
     setIsPulsing(true);
 
