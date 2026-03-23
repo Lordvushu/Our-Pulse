@@ -10,8 +10,9 @@ const EVENING_START = 20;
 
 const getCurrentWindow = () => {
   const h = new Date().getHours();
-  if (h >= 12) return 'evening';
-  return 'morning';
+  if (h >= MORNING_START && h < MORNING_END) return 'morning';
+  if (h >= EVENING_START) return 'evening';
+  return 'closed';
 };
 
 const getTodayString = () => new Date().toISOString().split('T')[0];
@@ -38,7 +39,10 @@ export function Dashboard() {
   const hasSentMorning = todayPulses.some(p => p.type === 'morning');
   const hasSentEvening = todayPulses.some(p => p.type === 'evening');
 
-  const canSend = true; // testing: always allow sending
+  const canSend =
+    currentWindow !== 'closed' &&
+    !(currentWindow === 'morning' && hasSentMorning) &&
+    !(currentWindow === 'evening' && hasSentEvening);
 
   const windowLabel =
     currentWindow === 'morning' ? 'Morning Window'

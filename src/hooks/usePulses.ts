@@ -7,8 +7,9 @@ const getTodayString = () => new Date().toISOString().split('T')[0];
 
 const getCurrentWindow = (): PulseType | 'closed' => {
   const h = new Date().getHours();
-  if (h >= 12) return 'evening';
-  return 'morning';
+  if (h >= 5 && h < 11) return 'morning';
+  if (h >= 20) return 'evening';
+  return 'closed';
 };
 
 const getPosition = (): Promise<GeolocationPosition> =>
@@ -60,7 +61,17 @@ export function usePulses(
     if (!userId) return;
 
     const window = getCurrentWindow();
+    if (window === 'closed') {
+      showError('No pulse window is open right now.');
+      return;
+    }
+
     const today = getTodayString();
+    const alreadySent = pulses.some(p => p.dateString === today && p.type === window);
+    if (alreadySent) {
+      showError(`You've already sent your ${window} pulse today.`);
+      return;
+    }
 
     setIsPulsing(true);
 
@@ -75,7 +86,7 @@ export function usePulses(
 
       const { data, error } = await supabase
         .from('pulses')
-        .insert({ user_id: userId, type: window, lat, lng, city, date_string: new Date().toISOString() })
+        .insert({ user_id: userId, type: window, lat, lng, city, date_string: today })
         .select()
         .single();
 
