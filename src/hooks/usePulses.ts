@@ -6,7 +6,6 @@ import type { Pulse, PulseType } from '../types';
 const getTodayString = () => new Date().toISOString().split('T')[0];
 
 const getCurrentWindow = (): PulseType | 'closed' => {
-  // TESTING: always open — restore time windows when done
   const h = new Date().getHours();
   if (h >= 12) return 'evening';
   return 'morning';
