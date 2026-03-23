@@ -6,10 +6,10 @@ import type { Pulse, PulseType } from '../types';
 const getTodayString = () => new Date().toISOString().split('T')[0];
 
 const getCurrentWindow = (): PulseType | 'closed' => {
+  // TESTING: always open — restore time windows when done
   const h = new Date().getHours();
-  if (h >= 5 && h < 11) return 'morning';
-  if (h >= 20) return 'evening';
-  return 'closed';
+  if (h >= 12) return 'evening';
+  return 'morning';
 };
 
 const getPosition = (): Promise<GeolocationPosition> =>
