@@ -124,9 +124,9 @@ export function Dashboard() {
           className={`pulse-button ${
             pulseSuccess
               ? '!bg-emerald-500 !shadow-emerald-500/40'
-              : !canSend
-              ? '!bg-slate-300 !text-slate-500 !shadow-none dark:!bg-slate-700 dark:!text-slate-400 cursor-not-allowed'
-              : 'animate-float'
+              : canSend
+              ? 'animate-float'
+              : ''
           }`}
         >
           {pulseSuccess ? (

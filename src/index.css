@@ -54,18 +54,31 @@ html.dark .glass-card {
 /* Pulse button */
 .pulse-button {
   @apply w-40 h-40 rounded-full flex flex-col items-center justify-center gap-2 font-medium transition-all duration-300;
-  color: white !important;
+  color: white;
   background: linear-gradient(135deg, var(--color-pulse-btn-start) 0%, var(--color-pulse-btn-end) 100%);
   box-shadow: 0 12px 32px rgba(6, 182, 212, 0.35);
 }
 
-.pulse-button:hover {
+.pulse-button:hover:not(:disabled) {
   @apply scale-105;
   box-shadow: 0 18px 44px rgba(6, 182, 212, 0.45);
 }
 
-.pulse-button:active {
+.pulse-button:active:not(:disabled) {
   @apply scale-95;
+}
+
+/* Disabled state — window closed */
+.pulse-button:disabled {
+  background: #cbd5e1 !important;
+  color: #64748b !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+}
+
+html.dark .pulse-button:disabled {
+  background: #334155 !important;
+  color: #94a3b8 !important;
 }
 
 @keyframes float {
