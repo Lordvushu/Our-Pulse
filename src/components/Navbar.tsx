@@ -20,7 +20,7 @@ export function Navbar() {
           className={`flex flex-col items-center gap-1 min-w-[60px] py-1 px-3 rounded-xl transition-colors ${
             activeTab === tab.id
               ? 'text-pulse-cyan'
-              : 'text-pulse-blue/50 dark:text-sky-100/40'
+              : 'text-pulse-label/70 dark:text-sky-300/70'
           }`}
         >
           <tab.icon
