@@ -100,6 +100,7 @@ export function usePulses(
       }).catch(console.error);
 
     } catch (err: unknown) {
+      console.error('sendPulse error:', err);
       const geoErr = err as GeolocationPositionError;
       if (geoErr.code === 1) {
         showError('Please enable location access to send a pulse.');
