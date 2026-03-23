@@ -60,17 +60,6 @@ export function usePulses(
     if (!userId) return;
 
     const window = getCurrentWindow();
-    if (window === 'closed') {
-      showError('No pulse window is open right now.');
-      return;
-    }
-
-    const today = getTodayString();
-    const alreadySent = pulses.some(p => p.dateString === today && p.type === window);
-    if (alreadySent) {
-      showError(`You've already sent your ${window} pulse today.`);
-      return;
-    }
 
     setIsPulsing(true);
 

@@ -38,10 +38,7 @@ export function Dashboard() {
   const hasSentMorning = todayPulses.some(p => p.type === 'morning');
   const hasSentEvening = todayPulses.some(p => p.type === 'evening');
 
-  const canSend =
-    currentWindow !== 'closed' &&
-    !(currentWindow === 'morning' && hasSentMorning) &&
-    !(currentWindow === 'evening' && hasSentEvening);
+  const canSend = true; // testing: always allow sending
 
   const windowLabel =
     currentWindow === 'morning' ? 'Morning Window'
