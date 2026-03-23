@@ -10,13 +10,12 @@ export async function reverseGeocode(lat: number, lng: number): Promise<string> 
     );
     if (!res.ok) return 'Unknown location';
     const data = await res.json();
-    return (
-      data.locality ||
-      data.city ||
-      data.principalSubdivision ||
-      data.countryName ||
-      'Unknown location'
-    );
+    const suburb = data.localityInfo?.administrative?.find(
+      (a: { adminLevel: number; name: string }) => a.adminLevel === 9 || a.adminLevel === 8
+    )?.name;
+    const city = data.city || data.locality || data.principalSubdivision;
+    if (suburb && city && suburb !== city) return `${suburb}, ${city}`;
+    return city || data.countryName || 'Unknown location';
   } catch {
     return 'Unknown location';
   }
