@@ -12,7 +12,7 @@ const SUPABASE_ANON_KEY = Deno.env.get('SUPABASE_ANON_KEY')!;
 
 // The "from" address must be verified in your Resend account.
 // During development you can use: onboarding@resend.dev
-const FROM_ADDRESS = 'Our Pulse <noreply@ourpulse.app>';
+const FROM_ADDRESS = 'Our Pulse <hello@phandaai.co.za>';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
