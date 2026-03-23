@@ -75,7 +75,7 @@ export function usePulses(
 
       const { data, error } = await supabase
         .from('pulses')
-        .insert({ user_id: userId, type: window, lat, lng, city, date_string: today })
+        .upsert({ user_id: userId, type: window, lat, lng, city, date_string: today }, { onConflict: 'user_id,type,date_string' })
         .select()
         .single();
 
