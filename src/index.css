@@ -68,17 +68,11 @@ html.dark .glass-card {
   @apply scale-95;
 }
 
-/* Disabled state — window closed */
+/* Disabled state — window closed, keep gradient but dim it */
 .pulse-button:disabled {
-  background: #cbd5e1 !important;
-  color: #64748b !important;
-  box-shadow: none !important;
+  color: white !important;
+  opacity: 0.6;
   cursor: not-allowed;
-}
-
-html.dark .pulse-button:disabled {
-  background: #334155 !important;
-  color: #94a3b8 !important;
 }
 
 @keyframes float {
