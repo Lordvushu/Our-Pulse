@@ -1,0 +1,5 @@
+{
+  "name": "Our Pulse",
+  "description": "A daily check-in wellness app to keep your inner circle informed and safe through morning and evening pulses.",
+  "requestFramePermissions": ["geolocation"]
+}
