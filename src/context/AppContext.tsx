@@ -6,6 +6,7 @@ import { usePulses } from '../hooks/usePulses';
 import { useNotifications } from '../hooks/useNotifications';
 import { useCountdown } from '../hooks/useCountdown';
 import { computeStreak } from '../lib/streak';
+import { supabase } from '../lib/supabase';
 import type { Pulse, Contact, UserProfile } from '../types';
 
 interface CountdownInfo {
@@ -34,6 +35,7 @@ interface AppContextType {
   isPulsing: boolean;
   pulseSuccess: boolean;
   sendPulse: () => Promise<void>;
+  sendSOS: () => Promise<void>;
 
   // UI
   activeTab: string;
@@ -73,6 +75,15 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const auth = useAuth(showError);
   const { contacts, addContact, removeContact } = useContacts(auth.user?.id, showError);
   const { pulses, isPulsing, pulseSuccess, sendPulse } = usePulses(auth.user?.id, showError, showSuccess);
+
+  const sendSOS = useCallback(async () => {
+    const { error } = await supabase.functions.invoke('send-sos-email', {});
+    if (error) {
+      showError('Could not send alert. Please call your circle directly.');
+    } else {
+      showSuccess('Alert sent to your circle. 🚨');
+    }
+  }, [showError, showSuccess]);
   const { permission: notificationPermission, requestPermission: requestNotificationPermission } =
     useNotifications(pulses);
   const countdown = useCountdown();
@@ -99,6 +110,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     isPulsing,
     pulseSuccess,
     sendPulse,
+    sendSOS,
     activeTab,
     setActiveTab,
     isDarkMode,

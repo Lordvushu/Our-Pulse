@@ -1,3 +1,4 @@
+import { useRef, useCallback } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { Moon, Sun, ArrowLeft, LogOut } from 'lucide-react';
 import { useApp } from './context/AppContext';
@@ -12,7 +13,21 @@ import { History } from './views/History';
 import { Settings } from './views/Settings';
 
 export default function App() {
-  const { user, profile, authLoading, activeTab, setActiveTab, isDarkMode, toggleDarkMode, signOut } = useApp();
+  const { user, profile, authLoading, activeTab, setActiveTab, isDarkMode, toggleDarkMode, signOut, sendSOS } = useApp();
+
+  // Silent SOS: tap the title 5 times within 3 seconds
+  const tapCount = useRef(0);
+  const tapTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const handleTitleTap = useCallback(() => {
+    tapCount.current += 1;
+    if (tapTimer.current) clearTimeout(tapTimer.current);
+    if (tapCount.current >= 5) {
+      tapCount.current = 0;
+      sendSOS();
+    } else {
+      tapTimer.current = setTimeout(() => { tapCount.current = 0; }, 3000);
+    }
+  }, [sendSOS]);
 
   // Loading splash
   if (authLoading) {
@@ -52,7 +67,7 @@ export default function App() {
           )}
         </div>
 
-        <h1 className="font-serif text-5xl text-pulse-blue dark:text-sky-50 mb-1">Our Pulse</h1>
+        <h1 onClick={handleTitleTap} className="font-serif text-5xl text-pulse-blue dark:text-sky-50 mb-1 select-none cursor-default">Our Pulse</h1>
         <p className="text-[11px] uppercase tracking-[0.2em] text-pulse-label dark:text-sky-100/55 font-medium">
           We show up for each other
         </p>
