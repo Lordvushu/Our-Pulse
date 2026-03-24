@@ -81,6 +81,9 @@ export function AuthScreen() {
               required
               value={form.email}
               onChange={set('email')}
+              autoCapitalize="none"
+              autoCorrect="off"
+              autoComplete="email"
               className="w-full bg-white dark:bg-slate-800 border border-sky-200 dark:border-slate-600 rounded-xl px-4 py-3 text-sm text-pulse-blue dark:text-sky-100 focus:outline-none focus:ring-2 focus:ring-pulse-cyan/40 transition-all placeholder:text-slate-400"
               placeholder="jane@example.com"
             />
@@ -97,6 +100,7 @@ export function AuthScreen() {
                 minLength={6}
                 value={form.password}
                 onChange={set('password')}
+                autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
                 className="w-full bg-white dark:bg-slate-800 border border-sky-200 dark:border-slate-600 rounded-xl px-4 py-3 pr-11 text-sm text-pulse-blue dark:text-sky-100 focus:outline-none focus:ring-2 focus:ring-pulse-cyan/40 transition-all placeholder:text-slate-400"
                 placeholder="••••••••"
               />
